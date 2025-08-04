@@ -37,6 +37,8 @@ A simple, secure, and modular user authentication system built with **Node.js**,
 
 ```txt
 secure-nodejs-auth-app/
+├── .github/workflows/
+│   └── ci.yml                 # A simple CI pipeline to check server
 ├── controllers/
 │   └── authController.js      # Handles registration and login logic
 ├── models/
@@ -50,6 +52,7 @@ secure-nodejs-auth-app/
 ├── docker-compose.yml         # Multi-service orchestration
 ├── package.json               # Node dependencies and scripts
 ├── README.md                  # You're reading it!
+├── healthcheck.sh             # A PING test for CI pipeline
 ├── test.py                    # Python script for testing endpoints
 └── requirements.txt           # List of requirements for python test
 

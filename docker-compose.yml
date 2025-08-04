@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  secure-node-app:
+    container_name: secure-node-app        
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: secure-node-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app                             # Mount source code
+      - /app/node_modules                  # Avoid host node_modules conflict
+    command: npx nodemon app.js            # Auto-reload on code change
+    env_file:
+      - .env                               # Load environment variables
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped

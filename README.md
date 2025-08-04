@@ -77,7 +77,7 @@ secure-nodejs-auth-app/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/secure-nodejs-auth-app.git
+git clone https://github.com/alipoosti/owasp-auth-node
 cd secure-nodejs-auth-app
 
 # 2. Create environment config

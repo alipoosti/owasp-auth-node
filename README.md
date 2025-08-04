@@ -126,6 +126,25 @@ You can expand this script for full integration testing.
 
 ---
 
+## ⚙️ CI Pipeline (GitHub Actions)
+
+This project includes an automated **CI pipeline using GitHub Actions**, located in `.github/workflows/ci.yml`. Every time you **push to the `main` branch** or open a **pull request**, the following checks are performed:
+
+- 🧪 Health check against `/ping` endpoint
+- ✅ App launch verification
+- 📦 Dependency install & build confirmation
+
+### 🔍 How to View CI Results
+
+1. Go to your GitHub repository.
+2. Click the **“Actions”** tab at the top.
+3. Select the latest workflow run titled **“Node.js CI”**.
+4. Expand steps to view logs, output, and errors.
+
+> ✅ You should see a success message confirming the `/ping` endpoint returned `{ "pong": true }`.
+
+---
+
 ## 🔐 Security Notes
 
 - This app is for **development, education, and prototyping**.

@@ -93,7 +93,7 @@ exports.findOrCreateOAuthUser = (provider, providerId, profile) => {
   }
 
   // Create a new username based on provider and providerId
-  const username = `${provider}_${providerId}`;
+  const username = `${provider}:${providerId}`;
 
   // Store user in userStore
   userStore.addOAuthUser({ provider, providerId, profile });

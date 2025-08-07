@@ -56,8 +56,9 @@ async function authRoutes(fastify, opts) {
       // Issue JWT for session
       const jwtToken = authController.issueJwtToken(user.username);
 
-      // Send token to client (could also set cookie)
-      reply.send({ token: jwtToken });
+      // Redirect to frontend OAuth callback with token in query param
+      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3003';
+      reply.redirect(`${frontendUrl}/oauth/callback?token=${jwtToken}`);
     } catch (err) {
       request.log.error(err, 'OAuth2 token exchange failed');
       reply.status(500).send({ error: 'OAuth2 token exchange failed' });

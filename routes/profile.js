@@ -41,7 +41,8 @@ async function profileRoutes(fastify, opts) {
 
     // ✅ A09: Log successful access event (with user context)
     request.log.info({ event: 'profile-access', user: username }, 'Profile retrieved');
-    reply.send({ username: user.username });
+    const displayName = user.profile && user.profile.name ? user.profile.name : user.username;
+    reply.send({ username: user.username, displayName });
   });
 }
 

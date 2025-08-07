@@ -48,7 +48,6 @@ const Profile = () => {
           <div>
             <p>You are not logged in.</p>
             <button onClick={() => window.location.href = '/login'} style={buttonStyle}>Go to Login</button>
-            <button onClick={() => window.location.href = '/'} style={buttonStyle}>Go to Home</button>
           </div>
         )
       )}

@@ -84,3 +84,29 @@ exports.login = async (request, reply) => {
   request.log.info({ event: 'login-success', user: username }, 'User logged in');
   reply.send({ token });
 };
+
+// Find or create OAuth user, returns user object with username
+exports.findOrCreateOAuthUser = (provider, providerId, profile) => {
+  let user = userStore.getOAuthUser(provider, providerId);
+  if (user) {
+    return user;
+  }
+
+  // Create a new username based on provider and providerId
+  const username = `${provider}_${providerId}`;
+
+  // Store user in userStore
+  userStore.addOAuthUser({ provider, providerId, profile });
+
+  // Return user object with username for JWT issuance
+  return { username };
+};
+
+// Issue JWT token for a given username
+exports.issueJwtToken = (username) => {
+  return jwt.sign(
+    { username },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
+  );
+};

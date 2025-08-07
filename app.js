@@ -13,6 +13,9 @@ const helmet = require('helmet'); // Optional — header-based hardening
 const authRoutes = require('./routes/auth'); // 🔐 Implement A01, A07 here
 const profileRoutes = require('./routes/profile'); // 🔐 Apply RBAC or ABAC here for A01
 
+// Removed @fastify/oauth2 due to incompatibility with Fastify v5
+const { AuthorizationCode } = require('simple-oauth2'); // OAuth2 client
+
 // Initialize Fastify server with improved logging
 const fastify = Fastify({
   logger: {
@@ -25,6 +28,19 @@ const fastify = Fastify({
     }
   },
   trustProxy: true // ✅ A05 – required when behind reverse proxies (e.g. NGINX)
+});
+
+// OAuth2 client configuration
+const oauth2Client = new AuthorizationCode({
+  client: {
+    id: process.env.GOOGLE_CLIENT_ID,
+    secret: process.env.GOOGLE_CLIENT_SECRET,
+  },
+  auth: {
+    tokenHost: 'https://accounts.google.com',
+    authorizePath: '/o/oauth2/v2/auth',
+    tokenPath: '/oauth2/v4/token',
+  },
 });
 
 // 🔐 Register cookie plugin (required for CSRF protection)

@@ -158,8 +158,9 @@ This project includes an automated **CI pipeline using GitHub Actions**, located
   - Harden headers further (e.g. `Content-Security-Policy`).
   - Consider input schema validation libraries like `zod`, `Joi`, or `fastify-validator`.
   - Add RBAC/ABAC patterns for fine-grained access control.
-
----
+  - Integrate OAuth 2.0 or OpenID Connect for federated authentication and social login options.
+  
+  ---
 
 ## 🧠 Future Enhancements
 

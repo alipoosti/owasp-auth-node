@@ -51,7 +51,9 @@ const Login = () => {
       </form>
       <GoogleLoginButton />
       {error && <p style={errorStyle}>{error}</p>}
-      <Link to="/" style={backLinkStyle}>Back to Home</Link>
+      <div style={{ marginTop: '20px' }}>
+        <Link to="/" style={backLinkStyle}>Back to Home</Link>
+      </div>
     </div>
   );
 };

@@ -55,7 +55,9 @@ const Register = () => {
       <GoogleLoginButton />
       {error && <p style={errorStyle}>{error}</p>}
       {success && <p style={successStyle}>{success}</p>}
-      <Link to="/" style={backLinkStyle}>Back to Home</Link>
+      <div style={{ marginTop: '20px' }}>
+        <Link to="/" style={backLinkStyle}>Back to Home</Link>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 const authController = require('../controllers/authController');
 const { URL } = require('url');
+const oauth2Client = require('../lib/oauthClient'); // Import oauth2Client instance
 
 async function authRoutes(fastify, opts) {
   // 🔐 Registration Endpoint
@@ -41,7 +42,7 @@ async function authRoutes(fastify, opts) {
         scope: 'openid email profile',
       };
 
-      const accessToken = await fastify.oauth2Client.getToken(tokenParams);
+      const accessToken = await oauth2Client.getToken(tokenParams);
 
       // Decode ID token to get user info
       const idToken = accessToken.token.id_token;

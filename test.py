@@ -44,3 +44,23 @@ auth_headers = {
 }
 profile_res = session.get(f"{BASE_URL}/api/profile", headers=auth_headers)
 print("[4] Profile:", profile_res.status_code, profile_res.json())
+
+# --- OAuth 2.0 Google OAuth flow demonstration ---
+
+import webbrowser
+import time
+
+print("\n[5] Starting OAuth 2.0 Google login flow demonstration...")
+
+# Step 1: Open browser to start OAuth login (user interaction required)
+oauth_login_url = f"{BASE_URL}/api/auth/oauth/google"
+print(f"Open this URL in your browser to start OAuth login:\n{oauth_login_url}")
+
+# Note: This script cannot automate the full OAuth flow due to browser interaction and redirects.
+# You can manually complete the OAuth login in the browser, then use the callback to get the token.
+
+print("After completing OAuth login in the browser, you should receive a JWT token from the callback endpoint.")
+print("You can then use that token to access protected routes similarly to the traditional login flow.")
+
+# Optionally, wait for user input to continue or exit
+input("Press Enter to exit the test script...")

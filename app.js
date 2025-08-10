@@ -8,6 +8,7 @@ const fastifyCookie = require('@fastify/cookie'); // Required for CSRF and sessi
 const fastifyCSRF = require('@fastify/csrf-protection'); // ✅ A01, A03, A10
 const rateLimit = require('@fastify/rate-limit'); // ✅ A05
 const helmet = require('helmet'); // Optional — header-based hardening
+const fastifyCors = require('@fastify/cors'); // Add CORS plugin
 
 // Application routes
 const authRoutes = require('./routes/auth'); // 🔐 Implement A01, A07 here
@@ -25,6 +26,14 @@ const fastify = Fastify({
     }
   },
   trustProxy: true // ✅ A05 – required when behind reverse proxies (e.g. NGINX)
+});
+
+// Register CORS plugin with configuration
+fastify.register(fastifyCors, {
+  origin: 'http://localhost:3003', // Allow frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
+  credentials: true, // Allow cookies and credentials
 });
 
 // 🔐 Register cookie plugin (required for CSRF protection)
@@ -115,3 +124,5 @@ fastify.listen({ port: PORT, host: HOST }, (err) => {
     process.exit(1);
   }
 });
+
+module.exports = fastify;

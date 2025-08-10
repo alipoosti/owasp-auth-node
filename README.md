@@ -158,8 +158,9 @@ This project includes an automated **CI pipeline using GitHub Actions**, located
   - Harden headers further (e.g. `Content-Security-Policy`).
   - Consider input schema validation libraries like `zod`, `Joi`, or `fastify-validator`.
   - Add RBAC/ABAC patterns for fine-grained access control.
-
----
+  - Integrate OAuth 2.0 or OpenID Connect for federated authentication and social login options.
+  
+  ---
 
 ## 🧠 Future Enhancements
 
@@ -171,7 +172,22 @@ This project includes an automated **CI pipeline using GitHub Actions**, located
 - Swagger/OpenAPI documentation
 
 ---
+  
+## 🆕 New Features
 
+### Google OAuth Login
+
+An option to use **Google OAuth** for user login has been added. This allows users to authenticate using their Google accounts, providing a convenient and secure alternative to traditional username/password login.
+
+### React Frontend Demo
+
+A **React frontend** has been added to demonstrate the app's functionality. This frontend provides a user-friendly interface for registration, login (including Google OAuth), and profile management.
+You can see a demo of the frontend in action in the clip at [`Frontend.gif`](Frontend.gif).
+
+![Frontend Demo](Frontend.gif)
+
+---
+  
 ## 📜 License
 
 MIT – free to use, modify, and share.

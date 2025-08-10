@@ -41,11 +41,23 @@ secure-nodejs-auth-app/
 │   └── ci.yml                 # A simple CI pipeline to check server
 ├── controllers/
 │   └── authController.js      # Handles registration and login logic
+├── lib/
+│   └── oauthClient.js         # OAuth client helper
 ├── models/
 │   └── userStore.js           # In-memory user database
 ├── routes/
 │   ├── auth.js                # /api/auth/login & /register endpoints
 │   └── profile.js             # /api/profile (JWT protected)
+├── frontend/                  # React frontend demo
+│   ├── public/               # Static assets (favicon, manifest, etc.)
+│   └── src/
+│       ├── components/       # React UI components
+│       ├── contexts/         # React context providers (e.g. AuthContext)
+│       ├── pages/            # React pages (Home, Login, Profile, etc.)
+│       ├── services/         # API service helpers
+│       ├── App.js            # Main React app component
+│       ├── index.js          # React app entry point
+│       └── ...               # Other React source files
 ├── .env.example               # Example environment variables
 ├── app.js                     # Fastify server setup
 ├── Dockerfile                 # Containerized deployment definition

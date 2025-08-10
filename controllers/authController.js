@@ -88,14 +88,15 @@ exports.login = async (request, reply) => {
 // Find or create OAuth user, returns user object with username
 exports.findOrCreateOAuthUser = (provider, providerId, profile) => {
   let user = userStore.getOAuthUser(provider, providerId);
-  if (user) {
-    // Update profile on each login to keep info fresh
-    user.profile = profile;
-    return user;
-  }
 
   // Create a new username based on provider and providerId
   const username = `${provider}:${providerId}`;
+
+  if (user) {
+    // Update profile on each login to keep info fresh
+    user.profile = profile;
+    return { username };
+  }
 
   // Store user in userStore
   userStore.addOAuthUser({ provider, providerId, profile });

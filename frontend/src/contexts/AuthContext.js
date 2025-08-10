@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }) => {
     console.log('AuthContext logout called');
     setToken(null);
     setUser(null);
+    localStorage.removeItem('authToken');
     authService.logout();
     console.log('AuthContext logout: token and user cleared');
     console.log('localStorage authToken after logout:', localStorage.getItem('authToken'));

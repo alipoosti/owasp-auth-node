@@ -89,6 +89,8 @@ exports.login = async (request, reply) => {
 exports.findOrCreateOAuthUser = (provider, providerId, profile) => {
   let user = userStore.getOAuthUser(provider, providerId);
   if (user) {
+    // Update profile on each login to keep info fresh
+    user.profile = profile;
     return user;
   }
 

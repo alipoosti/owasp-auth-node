@@ -37,9 +37,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    console.log('AuthContext logout called');
     setToken(null);
     setUser(null);
     authService.logout();
+    console.log('AuthContext logout: token and user cleared');
+    console.log('localStorage authToken after logout:', localStorage.getItem('authToken'));
   };
 
   // New method to set token and user after OAuth login
